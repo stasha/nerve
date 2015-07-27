@@ -72,19 +72,25 @@ var that = this;
 nerve.off({
     channel: 'some-channel',
 });
+
 nerve.off({
     route: 'some-route',
 });
+
 nerve.off({
     scope: that
 });
+
 nerve.off({
     channel: 'some-channel',
     route: 'some-route',
 });
+
 nerve.off({
     route: 'some-route',
     scope: that
+});
+
 nerve.off({
     channel: 'some-channel',
     route: 'some-route',
