@@ -2,9 +2,13 @@
 
 An asynchronous javascript micro framework for event broadcasts along routes and channels.
 
-Original code came from @jstandish https://github.com/jstandish/nerve
+Original code came from: 
+@artemdemo https://github.com/artemdemo/nerve
+	|
+	 - @jstandish https://github.com/jstandish/nerve
 
-He did a great job, but there are some flaws in his code and I decided to make major refactoring.
+Changes against artemdemo's code is that now it is possible to remove listeners 
+based any combination of arguments channel, route, scope.
 
 ## Listening to channels and routes - nerve.on()
 
@@ -63,10 +67,26 @@ nerve.off({
 ```
 
 
-**Removing a listener from a specific channel's route that has a different scope**
+**Removing a listeners **
 ```javascript
 var that = this;
 
+nerve.off({
+    channel: 'some-channel',
+});
+nerve.off({
+    route: 'some-route',
+});
+nerve.off({
+    scope: that
+});
+nerve.off({
+    channel: 'some-channel',
+    route: 'some-route',
+});
+nerve.off({
+    route: 'some-route',
+    scope: that
 nerve.off({
     channel: 'some-channel',
     route: 'some-route',
