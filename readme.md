@@ -3,9 +3,7 @@
 An asynchronous javascript micro framework for event broadcasts along routes and channels.
 
 Original code came from: 
-@artemdemo https://github.com/artemdemo/nerve
-	|
-	 - @jstandish https://github.com/jstandish/nerve
+@artemdemo https://github.com/artemdemo/nerve, @jstandish https://github.com/jstandish/nerve
 
 Changes against artemdemo's code is that now it is possible to remove listeners 
 based any combination of arguments channel, route, scope.
