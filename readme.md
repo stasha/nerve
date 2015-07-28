@@ -2,6 +2,8 @@
 
 An asynchronous javascript micro framework for event broadcasts along routes and channels.
 
+[![Build Status](https://travis-ci.org/stasha/nerve.svg?branch=master)](https://travis-ci.org/stasha/nerve)
+
 Original code came from: 
 @artemdemo https://github.com/artemdemo/nerve, @jstandish https://github.com/jstandish/nerve
 
