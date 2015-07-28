@@ -26,7 +26,6 @@
     "tests",
 	"reports",
 	"readme.md",
-	"package.json",
-	
+	"package.json"
   ]
 }
