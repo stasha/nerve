@@ -1,4 +1,4 @@
-/**
+/** 
  * Nerve is lightweight javascript library for asynchronous broadcasts along routes and channels.
  * @source https://github.com/stasha/nerve
  * (original) https://github.com/artemdemo/nerve
