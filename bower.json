@@ -20,12 +20,13 @@
   "license": "MIT",
   "ignore": [
     "**/.*",
-	"**/*.json",
+    "**/*.json",
     "node_modules",
     "bower_components",
+    "bower.json",
     "test",
     "tests",
-	"reports",
-	"**/*.md"
+    "reports",
+    "**/*.md"
   ]
 }
