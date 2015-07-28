@@ -1,0 +1,32 @@
+{
+  "name": "nerve",
+  "main": "nerve.js",
+  "version": "1.0.1",
+  "homepage": "https://github.com/stasha/nerve",
+  "authors": [
+    "@stasha",
+    "@artemdemo",
+    "@jstandish"
+  ],
+  "description": "An asynchronous javascript micro framework for event broadcasts along routes and channels.",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "routes",
+    "channels",
+    "events"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+	"reports",
+	"readme.md",
+	"package.json",
+	
+  ]
+}
