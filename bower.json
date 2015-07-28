@@ -1,7 +1,7 @@
 {
   "name": "nerve",
   "main": "nerve.js",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "homepage": "https://github.com/stasha/nerve",
   "authors": [
     "@stasha",
@@ -20,12 +20,12 @@
   "license": "MIT",
   "ignore": [
     "**/.*",
+	"**/*.json",
     "node_modules",
     "bower_components",
     "test",
     "tests",
 	"reports",
-	"readme.md",
-	"package.json"
+	"**/*.md"
   ]
 }
