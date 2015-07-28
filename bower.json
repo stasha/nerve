@@ -1,7 +1,7 @@
 {
   "name": "nerve",
   "main": "nerve.js",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "homepage": "https://github.com/stasha/nerve",
   "authors": [
     "@stasha",
