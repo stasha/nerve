@@ -1,7 +1,7 @@
 {
   "name": "nerve",
   "description": "An asynchronous javascript micro framework for event broadcasts along routes and channels.",
-  "version": "v1.0.2",
+  "version": "v1.0.3",
   "homepage": "https://github.com/stasha/nerve",
   "authors": [
 	"@stasha",
