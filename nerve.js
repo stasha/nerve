@@ -123,7 +123,7 @@ var nerve;
 	 */
 	function off(paramObj) {
 		var c = paramObj.channel;
-		var r = paramObj.route;
+		var r = paramObj.route || defaultRoute;
 		var s = paramObj.scope;
 
 		if (c && !r && !s && routes[c]) {
@@ -143,8 +143,8 @@ var nerve;
 
 		if (c && !r && s && routes[c]) {
 			for (var m in routes[c]) {
-				if (c.hasOwnProperty(m)) {
-					remove(c[m], s);
+				if (routes[c].hasOwnProperty(m)) {
+					remove(routes[c][m], s);
 				}
 			}
 			return;
@@ -226,6 +226,11 @@ var nerve;
 		var getType = {};
 		return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]';
 	}
+	
+	if(module){
+		module.exports = nerve;
+	}
+	
 })(nerve || (nerve = {}));
 /// <reference path="modules/nerveAppModule.ts" />
 // Bootstrapping main app

@@ -1,0 +1,27 @@
+{
+  "name": "nerve",
+  "description": "An asynchronous javascript micro framework for event broadcasts along routes and channels.",
+  "version": "v1.0.0",
+  "homepage": "https://github.com/stasha/nerve",
+  "authors": [
+	"@stasha",
+    "@artemdemo",
+    "@jstandish"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stasha/nerve"
+  },
+  "keywords": [
+    "routes",
+    "channels",
+    "event"
+  ],
+  "scripts": {
+	"test": "jasmine-node --verbose --junitreport --noColor test"
+  },
+  "main": "./nerve.min.js",
+  "devDependencies": {
+	"jasmine-node": "*"
+  }
+}
