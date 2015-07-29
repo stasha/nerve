@@ -1,0 +1,72 @@
+<html>
+	<head>
+		<script src="../nerve.js"></script>
+
+	</head>
+	<body>
+
+		<script>
+
+			var testVariable,
+					testVariable1,
+					testVariable2,
+					testVariable3,
+					_scope = {};
+
+			nerve.on({
+				channel: 'test-scope-off',
+				route: 'my-test-route',
+				callback: function () {
+					testVariable = true;
+				},
+				scope: _scope
+			});
+			nerve.on({
+				channel: 'test-scope-on',
+				route: 'my-test-route',
+				callback: function () {
+					testVariable1 = true;
+				},
+				scope: {}
+			});
+			nerve.on({
+				channel: 'test-scope-off',
+				route: 'my-test-route-2',
+				callback: function () {
+					testVariable2 = true;
+				},
+				scope: _scope
+			});
+
+			setTimeout(function () {
+				nerve.off({
+					route: 'my-test-route'
+				});
+			}, 30);
+			
+			setTimeout(function () {
+				nerve.send({
+					channel: 'test-scope-off',
+					route: 'my-test-route'
+				});
+				nerve.send({
+					channel: 'test-scope-off',
+					route: 'my-test-route-2'
+				});
+				nerve.send({
+					channel: 'test-scope-on',
+					route: 'my-test-route'
+				});
+			}, 100);
+
+			setTimeout(function () {
+				console.log(testVariable);
+				console.log(testVariable1);
+				console.log(testVariable2);
+//				console.log(testVariable3);
+			}, 150);
+		</script>
+
+
+	</body>
+</html>

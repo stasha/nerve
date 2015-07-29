@@ -42,7 +42,7 @@ var nerve;
 		if (!routes[paramObj.channel].hasOwnProperty(paramObj.route))
 			routes[paramObj.channel][paramObj.route] = [];
 		// Check to make sure we aren't adding ourselves twice
-		if (findSubscriber(caller, routes[paramObj.channel][paramObj.route]))
+		if (findSubscriber(caller, paramObj.callback, routes[paramObj.channel][paramObj.route]))
 			return;
 		routes[paramObj.channel][paramObj.route].push({
 			caller: caller,
@@ -123,7 +123,7 @@ var nerve;
 	 */
 	function off(paramObj) {
 		var c = paramObj.channel;
-		var r = paramObj.route || defaultRoute;
+		var r = paramObj.route;
 		var s = paramObj.scope;
 
 		if (c && !r && !s && routes[c]) {
@@ -152,19 +152,20 @@ var nerve;
 
 		if (!c && r && !s) {
 			for (var c in routes) {
-				if (c.hasOwnProperty(r)) {
-					delete c[r];
-					return;
+				if (routes[c].hasOwnProperty(r)) {
+					delete routes[c][r];
 				}
 			}
+			return;
 		}
 
 		if (!c && r && s) {
 			for (var c in routes) {
-				if (c.hasOwnProperty(r)) {
-					remove(c[r], s);
+				if (routes[c].hasOwnProperty(r)) {
+					remove(routes[c][r], s);
 				}
 			}
+			return;
 		}
 
 		if (!c && !r && s) {
@@ -192,7 +193,7 @@ var nerve;
 		var i = 0, len = r.length;
 		for (; i < len; i++) {
 			if (r[i] && r[i].caller === scope) {
-				delete r[i];
+				r.splice(i, 1);
 				i--;
 				continue;
 			}
@@ -206,13 +207,13 @@ var nerve;
 	 * @param array
 	 * @returns {*}
 	 */
-	function findSubscriber(callReference, array) {
+	function findSubscriber(callReference, callback, array) {
 		if (!array)
 			return null;
 		var i = 0, len = array.length;
 		for (; i < len; i++) {
 			console.log(array[i]);
-			if (array[i].caller === callReference)
+			if (array[i].caller === callReference && array[i].callback === callback)
 				return array[i];
 		}
 		return null;
@@ -227,7 +228,7 @@ var nerve;
 		return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]';
 	}
 	
-	if(module){
+	if(typeof module === "object"){
 		module.exports = nerve;
 	}
 	
