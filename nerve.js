@@ -68,34 +68,30 @@ var nerve;
 			paramObj.route = defaultRoute;
 		if (!paramObj.hasOwnProperty('context'))
 			paramObj.context = null;
-		
+
 		// First send messages to most specific channel/routes
 		if (routes.hasOwnProperty(paramObj.channel) && routes[paramObj.channel].hasOwnProperty(paramObj.route)) {
 			_send(paramObj.channel, paramObj.route, paramObj.context);
 		}
-		
+
 		// Than we send messages only to specific channel/defaultRoute
 		// This way we can intercept all messages on specified channel and modify context data
 		if (routes.hasOwnProperty(paramObj.channel) && routes[paramObj.channel].hasOwnProperty(defaultRoute)) {
 			_send(paramObj.channel, defaultRoute, paramObj.context);
-		}		
+		}
 	}
-	function _send(channel, route, context){
+	function _send(channel, route, context) {
 		var listeners = routes[channel][route], i = 0, len = listeners.length;
 		for (; i < len; i++) {
 			(function (ch, rt, idx) {
-				var ref = setTimeout(function () {
-					try {
-						routes[ch][rt][idx].callback.call(routes[ch][rt][idx].caller, context);
-						clearTimeout(ref);
-					}
-					catch (e) {
-					}
-				});
+				try {
+					routes[ch][rt][idx].callback.call(routes[ch][rt][idx].caller, context);
+				} catch (e) {
+				}
 			})(channel, route, i);
 		}
 	}
-	
+
 	nerve.send = send;
 	/**
 	 * Remove listener
@@ -238,11 +234,11 @@ var nerve;
 		var getType = {};
 		return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]';
 	}
-	
-	if(typeof module === "object"){
+
+	if (typeof module === "object") {
 		module.exports = nerve;
 	}
-	
+
 })(nerve || (nerve = {}));
 /// <reference path="modules/nerveAppModule.ts" />
 // Bootstrapping main app
